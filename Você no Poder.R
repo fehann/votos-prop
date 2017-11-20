@@ -6,11 +6,9 @@ library(httr)
 
 # working with XML file
 library(XML)
-library(xml2)
-library(plyr)
 
 # dataset
-# votos para determinada proposição - http://www2.camara.leg.br/transparencia/dados-abertos/dados-abertos-legislativo/webservices/proposicoes-1/obtervotacaoproposicao
+# votos para determinada proposiÃ§Ã£o - http://www2.camara.leg.br/transparencia/dados-abertos/dados-abertos-legislativo/webservices/proposicoes-1/obtervotacaoproposicao
 url  <- "https://www.camara.leg.br"
 path <- "SitCamaraWS/Proposicoes.asmx/ObterVotacaoProposicao?tipo=PEC&numero=282&ano=2016"
 raw_result <- GET(url = url, path = path)
@@ -33,7 +31,7 @@ names(rootNode)
 rootNode[[1]]
 rootNode[[4]][[1]][[2]]
 
-# Consegui loadar o arquivo XML e consigo acessar os valores no primeiro nível do rootNode (Sigla, Numero, Ano), mas não estou conseguindo entender como acessar a lista Votacoes (é uma lista que dentro dela tem outra lista com os votos de cada deputado). Tentei varias coisas, inclusive o comando abaixo. O objetivo, caso esteja pensando correto, é extrair os dados do XML para um data frame com todos os dados arrumados. Tem alguma ideia?
+# Consegui loadar o arquivo XML e consigo acessar os valores no primeiro nÃ­vel do rootNode (Sigla, Numero, Ano), mas nÃ£o estou conseguindo entender como acessar a lista Votacoes (Ã© uma lista que dentro dela tem outra lista com os votos de cada deputado). Tentei varias coisas, inclusive o comando abaixo. O objetivo, caso esteja pensando correto, Ã© extrair os dados do XML para um data frame com todos os dados arrumados. Tem alguma ideia?
 votacao <- xmlSApply(rootNode,"//Votacao",xmlValue)
 votacao
 
